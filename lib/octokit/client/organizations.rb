@@ -236,7 +236,7 @@ module Octokit
       # @example
       #   @client.outside_collaborators('github')
       def outside_collaborators(org, options={})
-        get "#{Organization.path org}/outside_collaborators", options
+        paginate "#{Organization.path org}/outside_collaborators", options
       end
 
       # Remove outside collaborator from an organization
@@ -800,6 +800,20 @@ module Octokit
       def unlock_repository(org, id, repo, options = {})
         options = ensure_api_media_type(:migrations, options)
         delete "#{Organization.path(org)}/migrations/#{id}/repos/#{repo}/lock", options
+      end
+
+      # Get GitHub Actions billing for an organization
+      # 
+      # Requires authenticated organization owner.
+      # 
+      # @param org [String, Integer] Organization GitHub login or id.
+      # @return [Sawyer::Resource] Hash representing GitHub Actions billing for an organization.
+      # @see https://docs.github.com/en/rest/reference/billing#get-github-actions-billing-for-an-organization
+      # 
+      # @example
+      #   @client.billing_actions('github')
+      def billing_actions(org)
+        get "#{Organization.path(org)}/settings/billing/actions"
       end
     end
   end

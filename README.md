@@ -2,7 +2,7 @@
 
 Ruby toolkit for the GitHub API.
 
-![logo](http://cl.ly/image/3Y013H0A2z3z/gundam-ruby.png)
+![logo](https://docs.github.com/assets/images/gundamcat.png)
 
 Upgrading? Check the [Upgrade Guide](#upgrading-guide) before bumping to a new
 [major version][semver].
@@ -41,7 +41,7 @@ Upgrading? Check the [Upgrade Guide](#upgrading-guide) before bumping to a new
     1. [Debugging](#debugging)
     2. [Caching](#caching)
 14. [Hacking on Octokit.rb](#hacking-on-octokitrb)
-    1. [Code of Conduction](#code_of_conduct)
+    1. [Code of Conduct](#code-of-conduct)
     2. [Running and writing new tests](#running-and-writing-new-tests)
 15. [Supported Ruby Versions](#supported-ruby-versions)
 16. [Versioning](#versioning)
@@ -86,10 +86,10 @@ Access the library in Ruby:
 
 ```ruby
 # Provide authentication credentials
-client = Octokit::Client.new(:login => 'defunkt', :password => 'c0d3b4ssssss!')
+client = Octokit::Client.new(:access_token => 'personal_access_token')
 
-# Set access_token instead of login and password if you use personal access token
-# client = Octokit::Client.new(:access_token => '[personal_access_token]!')
+# You can still use the username/password syntax by replacing the password value with your PAT.
+# client = Octokit::Client.new(:login => 'defunkt', :password => 'personal_access_token')
 
 # Fetch the current user
 client.user
@@ -323,7 +323,7 @@ custom pattern for traversing large lists.
 
 ## Working with GitHub Enterprise
 
-With a bit of setup, you can also use Octokit with your Github Enterprise instance.
+With a bit of setup, you can also use Octokit with your GitHub Enterprise instance.
 
 ### Interacting with the GitHub.com APIs in GitHub Enterprise
 
